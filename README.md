@@ -1,4 +1,4 @@
-# Passion Software
+# Just Practicing  
 
 This is a monorepo containing a full-stack web application designed for career and passion discovery, consisting of a front-end React application, a back-end Node.js application, and a Python-based AI service.
 
