@@ -1,5 +1,8 @@
 # Just Practicing  
 
+## Workflow
+<img width="1852" height="988" alt="diagram-export-25-02-2026-11_40_29" src="https://github.com/user-attachments/assets/479eeefd-6a15-4a98-a824-6ef5f0b8da2e" />
+
 This is a monorepo containing a full-stack web application designed for career and passion discovery, consisting of a front-end React application, a back-end Node.js application, and a Python-based AI service.
 
 ## Architecture and Structure
