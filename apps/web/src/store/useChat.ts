@@ -27,7 +27,7 @@ export const useChat = create<ChatState>()(persist((set, get) => ({
       history: currentMessages,
     });
 
-    const answer = res.data.answer;
+    const answer = res.data.error ? `Error: ${res.data.error}` : res.data.answer;
 
     set({
       messages: [
@@ -37,6 +37,6 @@ export const useChat = create<ChatState>()(persist((set, get) => ({
     });
   },
 }),
-{
+  {
     name: "chat-storage",
-}));
+  }));

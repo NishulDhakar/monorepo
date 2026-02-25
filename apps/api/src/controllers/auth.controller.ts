@@ -1,6 +1,8 @@
 import { User } from "../models/User.js";
 import { comparePassword, hashPassword } from "../utils/hash.js";
 import { generateToken } from "../utils/jwt.js";
+import type { Request, Response } from "../types/user.types.js";
+
 
 export const register = async (req: Request, res: Response) => {
 

@@ -6,7 +6,7 @@ from typing import List, Dict
 
 # Initialize model once
 llm = ChatGroq(
-    model="openai/gpt-oss-20b",
+    model="llama-3.3-70b-versatile",
     api_key=settings.GROQ_API_KEY,
 )
 
@@ -36,8 +36,14 @@ async def generate_response(
     if history is None:
         history = []
 
+    # Sanitize history to prevent LangChain coercion failures
+    valid_history = []
+    for msg in history:
+        if "role" in msg and "content" in msg and msg["content"] is not None:
+            valid_history.append(msg)
+
     # Trim memory
-    history = trim_history(history)
+    history = trim_history(valid_history)
 
     # Build message stack
     messages = [
@@ -52,13 +58,12 @@ async def generate_response(
 
         return {
             "answer": answer,
-            "updated_history": history + [
+            "updated_history": history
+            + [
                 {"role": "user", "content": question},
                 {"role": "assistant", "content": answer},
             ],
         }
 
     except Exception as e:
-        return {
-            "error": str(e)
-        }
+        return {"error": str(e)}
